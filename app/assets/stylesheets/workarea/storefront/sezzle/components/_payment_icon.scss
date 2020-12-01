@@ -1,0 +1,13 @@
+/*------------------------------------*\
+    #PAYMENT-ICON
+\*------------------------------------*/
+
+$payment-icon-sezzle-width:         58px !default;
+$payment-icon-sezzle-background:    #382757 !default;
+
+.payment-icon--sezzle {
+    padding: 0 ($spacing-unit / 2);
+    width: $payment-icon-sezzle-width;
+    background: $payment-icon-sezzle-background;
+    border-radius: 3px;
+}

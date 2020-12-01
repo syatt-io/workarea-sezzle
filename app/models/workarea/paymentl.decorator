@@ -1,0 +1,32 @@
+module Workarea
+  decorate Payment, with: :sezzle do
+    decorated do
+      embeds_one :sezzle, class_name: 'Workarea::Payment::Tender::Sezzle'
+    end
+
+    def sezzle?
+      sezzle.present?
+    end
+
+    def set_sezzle(attrs)
+      build_sezzle unless sezzle
+      sezzle.attributes = attrs.slice(
+        :sezzle_id,
+        :sezzle_response,
+        :intent
+      )
+
+      save
+    end
+
+    def clear_sezzle
+      self.sezzle = nil
+      save
+    end
+
+    def set_credit_card(*)
+      self.sezzle = nil
+      super
+    end
+  end
+end

@@ -1,0 +1,22 @@
+- if Workarea.config.sezzle_merchant_id.present?
+  :javascript
+    document.sezzleConfig = {
+      configGroups: [
+        {
+          targetXPath: "#{Workarea.config.sezzle.product_config[:target_xpath]}",
+          renderToPath: "#{Workarea.config.sezzle.product_config[:render_to_path]}",
+          urlMatch: "#{Workarea.config.sezzle.product_config[:url_match]}",
+          splitPriceElementsOn: "#{Workarea.config.sezzle.product_config[:split_price_elements_on]}"
+        },
+        {
+          targetXPath: "#{Workarea.config.sezzle.cart_config[:target_xpath]}",
+          renderToPath: "#{Workarea.config.sezzle.cart_config[:render_to_path]}",
+          urlMatch: "#{Workarea.config.sezzle.cart_config[:url_match]}",
+          altVersionTemplate: {
+            'en': '4 interest-free payments of %%price%% with %%logo%% %%info%%',
+            'fr': '4 paiements de %%price%% sans intérêts avec %%logo%% %%info%%'
+          }
+        }
+      ]
+    }
+  %script{ src: "https://widget.sezzle.com/v1/javascript/price-widget?uuid=#{Workarea.config.sezzle_merchant_id}" }

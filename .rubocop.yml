@@ -1,0 +1,405 @@
+AllCops:
+  TargetRubyVersion: 2.5
+  # RuboCop has a bunch of cops enabled by default. This setting tells RuboCop
+  # to ignore them, so only the ones explicitly set in this file are enabled.
+  DisabledByDefault: true
+  Exclude:
+    - '.git/**/*'
+    - 'node_modules/**/*'
+    - 'scripts/*'
+  Include:
+    - '**/*.decorator'
+
+inherit_mode:
+  merge:
+    - Include
+
+Bundler/OrderedGems:
+  Description: Order gems alphabetically
+  Enabled: true
+
+Layout/ArgumentAlignment:
+  Description: Here we check if the arguments on a multi-line method definition are aligned.
+  Enabled: true
+
+# Supports --auto-correct
+Layout/ArrayAlignment:
+  Description: Align the elements of an array literal if they span more than one line.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#align-multiline-arrays
+  Enabled: true
+
+# Supports --auto-correct
+Layout/BlockAlignment:
+  Description: Align block ends correctly.
+  Enabled: true
+
+Layout/BlockEndNewline:
+  Description: This cop checks whether the end statement of a do..end block is on its own line.
+  Enabled: true
+
+Layout/CaseIndentation:
+  Description: Align `when` with `case`.
+  Enabled: true
+
+# Align comments with method definitions.
+Layout/CommentIndentation:
+  Description: Indentation of comments.
+  Enabled: true
+
+Layout/ConditionPosition:
+  Description: Checks for condition placed in a confusing position relative to the keyword.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#same-line-condition
+  Enabled: true
+
+Layout/ClassStructure:
+  Enabled: false
+  Categories:
+    module_inclusion:
+      - include
+      - prepend
+      - extend
+  ExpectedOrder:
+    - module_inclusion
+    - constants
+    - public_class_methods
+    - initializer
+    - instance_methods
+    - protected_methods
+    - private_methods
+
+Layout/ClosingParenthesisIndentation:
+  Description: This cop checks the indentation of hanging closing parentheses in method calls, method definitions, and grouped expressions. A hanging closing parenthesis means ) preceded by a line break.
+  Enabled: true
+
+Layout/EmptyLineAfterMagicComment:
+  Enabled: true
+
+Layout/EmptyLinesAroundClassBody:
+  Description: In a regular class definition, no empty lines around the body.
+  Enabled: true
+
+Layout/EmptyLineAfterGuardClause:
+  Description: There should be an empty line after a guard clause.
+  Enabled: true
+
+Layout/EmptyLinesAroundMethodBody:
+  Description: In a regular method definition, no empty lines around the body.
+  Enabled: true
+
+Layout/EmptyLinesAroundModuleBody:
+  Description: In a regular module definition, no empty lines around the body.
+  Enabled: true
+
+Layout/EmptyComment:
+  Description: Checks empty comment.
+  Enabled: true
+
+Layout/EmptyLineBetweenDefs:
+  Description: Use empty lines between defs.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#empty-lines-between-methods
+  Enabled: true
+  AllowAdjacentOneLineDefs: false
+
+# Supports --auto-correct
+Layout/EmptyLines:
+  Description: Don't use several empty lines in a row.
+  Enabled: true
+
+# Supports --auto-correct
+Layout/ElseAlignment:
+  Description: Align elses and elsifs correctly.
+  Enabled: true
+
+Layout/DefEndAlignment:
+  Description: Align ends corresponding to defs correctly.
+  Enabled: true
+  EnforcedStyleAlignWith: start_of_line
+  AutoCorrect: false
+
+# Supports --auto-correct
+Layout/EndAlignment:
+  Description: Align ends correctly.
+  # The value `keyword` means that `end` should be aligned with the matching
+  # keyword (if, while, etc.).
+  # The value `variable` means that in assignments, `end` should be aligned
+  # with the start of the variable on the left hand side of `=`. In all other
+  # situations, `end` should still be aligned with the keyword.
+  # The value `start_of_line` means that `end` should be aligned with the start
+  # of the line which the matching keyword appears on.
+  Enabled: true
+  EnforcedStyleAlignWith: keyword
+  AutoCorrect: false
+
+# Supports --auto-correct
+Layout/ExtraSpacing:
+  Description: Do not use unnecessary spacing.
+  Enabled: true
+  AllowForAlignment: true
+
+Layout/FirstArgumentIndentation:
+  Enabled: true
+
+Layout/FirstArrayElementIndentation:
+  Description: Use 2 spaces for indentation in a array, relative to the start of the line where the left curly brace is.
+  Enabled: true
+
+Layout/FirstHashElementIndentation:
+  Description: Use 2 spaces for indentation in a hash, relative to the start of the line where the left curly brace is.
+  Enabled: true
+
+Layout/FirstHashElementLineBreak:
+  Description: Checks for a line break before the first element in a multi-line hash.
+  Enabled: true
+
+Layout/HashAlignment:
+  Description: Align the elements of a hash literal if they span more than one line.
+  Enabled: true
+  EnforcedHashRocketStyle: key
+  EnforcedColonStyle: key
+  EnforcedLastArgumentHashStyle: always_inspect
+  SupportedLastArgumentHashStyles:
+    - always_inspect
+    - always_ignore
+    - ignore_implicit
+    - ignore_explicit
+
+Layout/IndentationConsistency:
+  Description: Ensure all lines of code are indented consistently
+  Enabled: true
+
+Layout/IndentationWidth:
+  Width: 2
+
+Layout/LineLength:
+  Description: This cop checks that the line length is less than 100 characters
+  Enabled: true
+  IgnoredPatterns: ['(\A|\s)#']
+  Max: 100
+
+Layout/MultilineHashBraceLayout:
+  Description: This cop checks that the closing brace in a hash literal is either on the same line as the last hash element, or a new line.
+  Enabled: true
+
+Layout/MultilineMethodCallIndentation:
+  Description: This cop checks the indentation of the method name part in method calls that span more than one line.
+  EnforcedStyle: indented_relative_to_receiver
+  Enabled: true
+
+Layout/MultilineMethodArgumentLineBreaks:
+  Description: This cop ensures that each argument in a multi-line method call starts on a separate line.
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceAfterColon:
+  Description: Use spaces after colons.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-operators
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceAfterComma:
+  Description: Use spaces after commas.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-operators
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceAfterMethodName:
+  Description: Do not put a space between a method name and the opening parenthesis
+    in a method definition.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#parens-no-spaces
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceAfterNot:
+  Description: Tracks redundant space after the ! operator.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-space-bang
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceAfterSemicolon:
+  Description: Use spaces after semicolons.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-operators
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceAroundBlockParameters:
+  Description: Checks the spacing inside and after block parameters pipes.
+  Enabled: true
+  EnforcedStyleInsidePipes: no_space
+
+Layout/SpaceAroundEqualsInParameterDefault:
+  Enabled: true
+
+Layout/SpaceAroundKeyword:
+  Enabled: true
+
+Layout/SpaceAroundOperators:
+  Enabled: true
+
+Layout/SpaceBeforeFirstArg:
+  Enabled: true
+
+Layout/SpaceBeforeBlockBraces:
+  Description: Use `foo {}` not `foo{}`.
+  Enabled: true
+
+Layout/SpaceInsideBlockBraces:
+  Description: Use `foo { bar }` not `foo {bar}`.
+  Enabled: true
+
+Layout/SpaceInsideHashLiteralBraces:
+  Description: "Use `{ a: 1 }` not `{a:1}`."
+  Enabled: true
+
+Layout/SpaceInsideParens:
+  Enabled: true
+
+Layout/IndentationStyle:
+  Description: Detect hard tabs, no hard tabs.
+  Enabled: true
+
+Layout/TrailingEmptyLines:
+  Description: There must be an empty newline at the end of the file.
+  StyleGuide: https://rubystyle.guide/#newline-eof
+  Enabled: true
+  EnforcedStyle: final_newline
+
+Layout/TrailingWhitespace:
+  Description: No trailing whitespace.
+  Enabled: true
+
+Lint/AssignmentInCondition:
+  Description: Don't use assignment in conditions.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#safe-assignment-in-condition
+  Enabled: true
+  AllowSafeAssignment: false
+
+Lint/Debugger:
+  Description: Checks for debugger statements
+  Enabled: true
+
+Lint/EmptyInterpolation:
+  Description: Checks for empty string interpolation.
+  Enabled: true
+
+Lint/PercentStringArray:
+  Description: >-
+    Checks for unwanted commas and quotes in %w/%W literals.
+  Enabled: true
+
+# Use my_method(my_arg) not my_method( my_arg ) or my_method my_arg.
+Lint/RequireParentheses:
+  Description: Use parentheses in the method call to avoid confusion about precedence.
+  Enabled: true
+
+Lint/UselessAssignment:
+  Description: Checks for useless assignment to a local variable.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#underscore-unused-vars
+  Enabled: true
+
+Naming/ClassAndModuleCamelCase:
+  Description: Use CamelCase for classes and modules.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#camelcase-classes
+  Enabled: true
+
+Naming/ConstantName:
+  Description: Constants should use SCREAMING_SNAKE_CASE.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#screaming-snake-case
+  Enabled: false
+
+Naming/FileName:
+  Description: Use snake_case for source file names.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#snake-case-files
+  Enabled: false
+
+Naming/MethodName:
+  Description: Use the configured style when naming methods.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#snake-case-symbols-methods-vars
+  Enabled: false
+  EnforcedStyle: snake_case
+  SupportedStyles:
+    - snake_case
+    - camelCase
+
+Naming/VariableName:
+  Description: Use the configured style when naming variables.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#snake-case-symbols-methods-vars
+  Enabled: true
+  EnforcedStyle: snake_case
+  SupportedStyles:
+    - snake_case
+    - camelCase
+
+# Supports --auto-correct
+Style/AndOr:
+  Description: Use &&/|| instead of and/or.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-and-or-or
+  Enabled: true
+  Exclude:
+    - 'app/controllers/**/*'
+
+Style/BlockDelimiters:
+  Description: Check for uses of braces or do/end around single line or multi-line blocks.
+  Enabled: true
+
+# Use Ruby >= 1.9 syntax for hashes. Prefer { a: :b } over { :a => :b }.
+Style/HashSyntax:
+  Enabled: true
+
+# Defining a method with parameters needs parentheses.
+Style/MethodDefParentheses:
+  Description: Checks if the method definitions have or don't have parentheses.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#method-parens
+  Enabled: true
+  EnforcedStyle: require_parentheses
+
+# Supports --auto-correct
+Style/NilComparison:
+  Description: Prefer x.nil? to x == nil.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#predicate-methods
+  Enabled: true
+
+# Supports --auto-correct
+Style/Not:
+  Description: Use ! instead of not.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#bang-not-not
+  Enabled: true
+
+Style/OptionalArguments:
+  Description: Checks for optional arguments that do not appear at the end of the argument
+    list
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#optional-arguments
+  Enabled: true
+
+# Supports --auto-correct
+Style/RedundantReturn:
+  Description: Don't use return where it's not required.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-explicit-return
+  Enabled: true
+  AllowMultipleReturnValues: false
+
+# Supports --auto-correct
+Style/RegexpLiteral:
+  Description: Use / or %r around regular expressions.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#percent-r
+  Enabled: false
+  EnforcedStyle: slashes
+  SupportedStyles:
+    - slashes
+    - percent_r
+    - mixed
+  AllowInnerSlashes: false
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
+
+Style/UnlessElse:
+  Description: Do not use unless with else. Rewrite these with the positive case first.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-else-with-unless
+  Enabled: true
+
+Style/ZeroLengthPredicate:
+  Description: 'Use #empty? when testing for objects of length 0.'
+  Enabled: false

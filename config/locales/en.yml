@@ -1,0 +1,43 @@
+---
+en:
+  workarea:
+    admin:
+      orders:
+        tenders:
+          sezzle:
+            title: Sezzle
+    storefront:
+      orders:
+        tenders:
+          sezzle: Sezzle
+      carts:
+        sezzle: "Pay %{installment_count} interest free payments of %{installment_price} with"
+      checkouts:
+        sezzle: Pay With Sezzle
+      products:
+         sezzle: "Or %{installment_count} payments of %{installment_price} with"
+      sezzle:
+        address_error: We can not ship to this address. Please enter a new address.
+        cancel_message: Your Sezzle order has been cancelled. Please select another payment method.
+        check_out: Check Out with sezzle
+        checkout_submit_text: Continue to Sezzle
+        on_continue: When you continue, you will be taken to the Sezzle website to complete your order.
+        paid_with_sezzle: Paid with Sezzle
+        payment_error: There was a problem processing your Sezzle payment, you have not been charged. Please try again or select
+          another payment method.
+        sezzle: Sezzle
+        learn_more: Learn More
+    sezzle:
+      authorize: "%{amount} has been captured"
+      pre_authorized_message: "Authorization happens in the Sezzle checkout process. No API response to record. %{amount} was authorized by Sezzle."
+      pre_captured_message: "Capture occurred in the Sezzle checkout process. No API response to record. %{amount} was captured by Sezzle."
+      pre_purchased_message: "Authorize and Capture occurred in the Sezzle checkout process. No API response to record. %{amount} was captured by Sezzle."
+      capture: "%{amount} has been captured"
+      purchase: "%{amount} has been purchased"
+      refund: "%{amount} has been refunded"
+      void: Sezzle Transaction has been voided
+      authorize_failure: Sezzle authorize has failed
+      capture_failure: Sezzle capture has failed
+      purchase_failure: Sezzle purchase has failed
+      refund_failure: Sezzle refund has failed
+

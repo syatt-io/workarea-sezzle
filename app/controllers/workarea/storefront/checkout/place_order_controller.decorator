@@ -1,0 +1,11 @@
+module Workarea
+  decorate Storefront::Checkout::PlaceOrderController, with: 'sezzle' do
+    def place_order
+      if params[:payment] == 'sezzle' && !current_checkout.payment.sezzle?
+        redirect_to start_sezzle_path and return
+      else
+        super
+      end
+    end
+  end
+end

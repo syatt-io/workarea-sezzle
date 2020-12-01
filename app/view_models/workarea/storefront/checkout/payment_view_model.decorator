@@ -1,0 +1,11 @@
+module Workarea
+  decorate Storefront::Checkout::PaymentViewModel, with: :sezzle do
+    decorated do
+      delegate :sezzle?, to: :payment
+    end
+
+    def using_new_card?
+      super && !sezzle?
+    end
+  end
+end

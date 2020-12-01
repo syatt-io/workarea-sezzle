@@ -1,0 +1,8 @@
+.checkout-payment__primary-method{ class: ('checkout-payment__primary-method--selected' if @step.sezzle?) }
+  .button-property
+    = hidden_field_tag 'from_checkout', 'from_checkout', id: nil
+    .value= radio_button_tag 'payment', 'sezzle', step.sezzle?
+    = label_tag 'payment[sezzle]', nil, class: 'button-property__name' do
+      %span.button-property__text= inline_svg('workarea/sezzle_logo_white.svg', class: 'payment-icon payment-icon--sezzle')
+  %p.checkout-payment__primary-method-description
+    %span= t('workarea.storefront.sezzle.on_continue')
