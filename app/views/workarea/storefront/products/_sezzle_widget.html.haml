@@ -1,5 +1,5 @@
 - if Workarea.config.sezzle_merchant_id.present?
-  #sezzle.sezzle.sezzle--product
+  .sezzle.sezzle--product
     .sezzle__prices
       - if product.show_sell_range?
         %span.sezzle__price= number_to_currency(product.sell_min_price)
