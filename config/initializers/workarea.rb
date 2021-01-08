@@ -7,14 +7,14 @@ Workarea.configure do |config|
   config.sezzle.open_timeout = 10
 
   config.sezzle.product_config = {
-    target_xpath: '#sezzle/.sezzle__prices',
+    target_xpath: '.sezzle/.sezzle__prices',
     render_to_path: './',
     url_match: 'products',
     split_price_elements_on: '–'
   }
 
   config.sezzle.cart_config = {
-    target_xpath: '#sezzle/.sezzle__prices',
+    target_xpath: '.sezzle/.sezzle__prices',
     render_to_path: './',
     url_match: 'cart'
   }
