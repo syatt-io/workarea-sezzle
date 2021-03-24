@@ -11,12 +11,9 @@
         {
           targetXPath: "#{Workarea.config.sezzle.cart_config[:target_xpath]}",
           renderToPath: "#{Workarea.config.sezzle.cart_config[:render_to_path]}",
-          urlMatch: "#{Workarea.config.sezzle.cart_config[:url_match]}",
-          altVersionTemplate: {
-            'en': '4 interest-free payments of %%price%% with %%logo%% %%info%%',
-            'fr': '4 paiements de %%price%% sans intérêts avec %%logo%% %%info%%'
-          }
+          urlMatch: "#{Workarea.config.sezzle.cart_config[:url_match]}"
         }
-      ]
+      ],
+      language: "#{sezzle_language}"
     }
   %script{ src: "https://widget.sezzle.com/v1/javascript/price-widget?uuid=#{Workarea.config.sezzle_merchant_id}" }
