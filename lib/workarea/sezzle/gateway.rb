@@ -35,6 +35,13 @@ module Workarea
         Sezzle::Response.new(response)
       end
 
+      def get_order(id, attrs = {})
+        response = connection.get do |req|
+          req.url "v2/order/#{id}"
+        end
+        Sezzle::Response.new(response)
+      end
+
       private
 
       def connection

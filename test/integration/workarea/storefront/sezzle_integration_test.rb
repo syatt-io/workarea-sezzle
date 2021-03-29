@@ -155,15 +155,15 @@ module Workarea
         assert_equal('purchase', store_credit_tender.transactions.first.action)
       end
 
-      def test_failed_sezzle_capture
+      def test_failed_sezzle_authorize
         payment = Payment.find(order.id)
 
-        payment.set_sezzle(token: 'error_token')
+        payment.set_sezzle(
+          sezzle_id: 'failure',
+          sezzle_response: '{}'
+        )
 
-        params = { token: 'error_token', status: 'SUCCESS' }
-
-        get storefront.complete_sezzle_path(params)
-
+        get storefront.complete_sezzle_path(order_id: order.id)
         payment.reload
         order.reload
 
