@@ -97,6 +97,11 @@ module Workarea
         Response.new(response(payment_response_body))
       end
 
+      def get_order(id, attrs = {})
+        return Response.new(response(get_order_response_auth_failure)) if id == 'failure'
+        Response.new(response(get_order_response))
+      end
+
       private
 
       def response(body, status = 200)
@@ -121,6 +126,52 @@ module Workarea
       def payment_response_body(status: 'APPROVED')
         {
           "uuid": '6c9db5d4-d09a-4224-860a-b5438ac32ca8'
+        }
+      end
+
+      def get_order_response
+        {
+          "authorization": {
+              "approved": true,
+              "authorization_amount": {
+                  "amount_in_cents": 10000,
+                  "currency": "USD"
+                },
+            "metadata": {
+                "location_id": "123",
+                "store_manager": "Jane Doe",
+                "store_name": "Downtown Minneapolis"
+            },
+            "order_amount": {
+                "amount_in_cents": 10000,
+                "currency": "USD"
+            },
+            "reference_id": "ord_12345",
+            "uuid": "12a34bc5-6de7-890f-g123-4hi1238jk902"
+          }
+        }
+      end
+
+      def get_order_response_auth_failure
+        {
+          "authorization": {
+              "approved": false,
+              "authorization_amount": {
+                  "amount_in_cents": 10000,
+                  "currency": "USD"
+              },
+            "metadata": {
+                "location_id": "123",
+                "store_manager": "Jane Doe",
+                "store_name": "Downtown Minneapolis"
+            },
+            "order_amount": {
+                "amount_in_cents": 10000,
+                "currency": "USD"
+            },
+            "reference_id": "ord_12345",
+            "uuid": "12a34bc5-6de7-890f-g123-4hi1238jk902"
+          }
         }
       end
     end

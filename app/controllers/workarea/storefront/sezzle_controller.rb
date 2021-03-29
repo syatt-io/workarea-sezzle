@@ -45,11 +45,16 @@ module Workarea
 
       shipping = current_shipping
 
+      # verify that the authorization was successfull
+      tender = payment.sezzle
+      verifcation_response = gateway.get_order(tender.sezzle_id)
+      verfied =  verifcation_response.body["authorization"]["approved"] rescue false
+
       Pricing.perform(current_order, shipping)
       payment.adjust_tender_amounts(current_order.total_price)
 
       # place the order.
-      if current_checkout.place_order
+      if verfied && current_checkout.place_order
         completed_place_order
       else
         incomplete_place_order
