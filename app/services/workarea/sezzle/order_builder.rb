@@ -1,7 +1,7 @@
 module Workarea
   module Sezzle
     class OrderBuilder
-      module ProductUrl
+      module Routing
         include Workarea::I18n::DefaultUrlOptions
         include Storefront::Engine.routes.url_helpers
         extend self
@@ -114,14 +114,14 @@ module Workarea
       end
 
       def complete_url
-        Storefront::Engine.routes.url_helpers.complete_sezzle_url(
+        Routing.complete_sezzle_url(
           host: Workarea.config.host,
           order_id: order.id
         )
       end
 
       def cancel_url
-        Storefront::Engine.routes.url_helpers.cancel_sezzle_url(
+        Routing.cancel_sezzle_url(
           host: Workarea.config.host,
           order_id: order.id
         )

@@ -3,6 +3,22 @@ require 'test_helper'
 module Workarea
   module Sezzle
     class OrderBuilderTest < Workarea::TestCase
+      setup :set_i18n
+      teardown :reset_i18n
+
+      def set_i18n
+        @_default_locale = ::I18n.config.default_locale
+        @_locale = ::I18n.locale
+
+        ::I18n.config.default_locale = :en
+        ::I18n.locale = :en
+      end
+
+      def reset_i18n
+        ::I18n.config.default_locale = @_default_locale
+        ::I18n.locale = @_locale
+      end
+
       def test_build
         create_order_total_discount
         order = create_order
@@ -16,7 +32,22 @@ module Workarea
 
         order.reload
         payment.reload
+
+        ::I18n.locale = :fr
         order_hash = Workarea::Sezzle::OrderBuilder.new(order).build
+
+        assert_includes(order_hash[:cancel_url][:href], 'locale=fr')
+        assert_includes(order_hash[:complete_url][:href], 'locale=fr')
+
+        assert_nothing_raised { order_hash.to_json }
+
+        ::I18n.locale = :en
+        order_hash = Workarea::Sezzle::OrderBuilder.new(order).build
+
+        assert_nothing_raised { order_hash.to_json }
+
+        refute_includes(order_hash[:cancel_url][:href], 'locale=')
+        refute_includes(order_hash[:complete_url][:href], 'locale=')
 
         customer = order_hash[:customer]
         assert_equal(order.email, customer[:email])
