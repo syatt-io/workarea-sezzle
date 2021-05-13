@@ -1,3 +1,32 @@
+Workarea Sezzle 1.0.5 (2021-05-13)
+--------------------------------------------------------------------------------
+
+*   Ensure return URLs sent to sezzle include locale when not default
+
+
+    Matt Duffy
+
+*   Prep new release
+
+
+    Jeff Yucis
+
+*   Verify that that the authorization was successful when completing a sezzle purchase.
+
+
+    Jeff Yucis
+
+*   SEZZ-5  Add multi-language support
+
+    Only supports EN and FR, per Sezzle docs.
+    Add new helper for getting Rails locale.
+    Remove translation templates as they were the defaults anyway.
+    Add language to script.
+
+    James Dobson
+
+
+
 Workarea Sezzle 1.0.4 (2021-03-29)
 --------------------------------------------------------------------------------
 
