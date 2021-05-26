@@ -1,3 +1,18 @@
+Workarea Sezzle 1.0.6 (2021-05-26)
+--------------------------------------------------------------------------------
+
+*   Bump version to 1.0.6
+
+
+    Jeff Yucis
+
+*   Call sezzle to delete checkout when user cancels sezzle
+
+
+    Matt Duffy
+
+
+
 Workarea Sezzle 1.0.5 (2021-05-13)
 --------------------------------------------------------------------------------
 
