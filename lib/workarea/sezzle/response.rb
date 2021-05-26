@@ -6,7 +6,7 @@ module Workarea
       end
 
       def success?
-        @response.present? && (@response.status == 201 || @response.status == 200)
+        @response.present? && [200, 201, 204].include?(@response.status)
       end
 
       def body

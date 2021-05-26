@@ -42,6 +42,13 @@ module Workarea
         Sezzle::Response.new(response)
       end
 
+      def delete_checkout(id)
+        response = connection.delete do |req|
+          req.url "v2/order/#{id}/checkout"
+        end
+        Sezzle::Response.new(response)
+      end
+
       private
 
       def connection

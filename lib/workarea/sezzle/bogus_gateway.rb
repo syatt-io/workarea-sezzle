@@ -102,6 +102,10 @@ module Workarea
         Response.new(response(get_order_response))
       end
 
+      def delete_checkout(id)
+        return Response.new(response(nil, 204))
+      end
+
       private
 
       def response(body, status = 200)

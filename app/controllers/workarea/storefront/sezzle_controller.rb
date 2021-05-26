@@ -67,6 +67,7 @@ module Workarea
       current_order.user_id = current_user.try(:id)
 
       payment = current_checkout.payment
+      gateway.delete_checkout(payment.sezzle.sezzle_id)
       payment.clear_sezzle
 
       flash[:success] = t('workarea.storefront.sezzle.cancel_message')
